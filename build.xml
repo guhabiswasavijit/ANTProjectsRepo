@@ -1,0 +1,156 @@
+<project name="KafkaIntegration" default="jar" xmlns:spring-boot="antlib:org.springframework.boot.ant">
+  <property name="build.dir" value="target"/>
+  <property name="remoteRepository" value="H:/RemoteRepository"/>
+  <property name="cobertura.dir" value="H:/cobertura-2.1.1-bin/cobertura-2.1.1" />
+  <property name="instrumented.dir" value="H:/cobertura-2.1.1-bin/cobertura-2.1.1/instrumented" />
+  <path id="cobertura.classpath">
+		<fileset dir="${cobertura.dir}">
+			<include name="cobertura-2.1.1.jar" />
+			<include name="lib/*.jar" />
+		</fileset>
+  </path>
+  <path id="project.classpath">
+        <fileset dir="${cobertura.dir}">
+			<include name="cobertura-2.1.1.jar" />
+		</fileset>
+		<fileset dir="${remoteRepository}">
+			<include name="BOOT-INF/lib/antlr-2.7.7.jar"></include>
+			<include name="BOOT-INF/lib/aspectjweaver-1.9.7.jar"></include>
+			<include name="BOOT-INF/lib/bcpkix-jdk15on-1.55.jar"></include>
+			<include name="BOOT-INF/lib/bcprov-jdk15on-1.55.jar"></include>
+			<include name="BOOT-INF/lib/byte-buddy-1.10.22.jar"></include>
+			<include name="BOOT-INF/lib/classmate-1.5.1.jar"></include>
+			<include name="BOOT-INF/lib/dom4j-2.1.3.jar"></include>
+			<include name="BOOT-INF/lib/FastInfoset-1.2.15.jar"></include>
+			<include name="BOOT-INF/lib/hibernate-commons-annotations-5.1.2.Final.jar"></include>
+			<include name="BOOT-INF/lib/hibernate-core-5.4.32.Final.jar"></include>
+			<include name="BOOT-INF/lib/HikariCP-4.0.3.jar"></include>
+			<include name="BOOT-INF/lib/istack-commons-runtime-3.0.7.jar"></include>
+			<include name="BOOT-INF/lib/jackson-annotations-2.12.4.jar"></include>
+			<include name="BOOT-INF/lib/jackson-core-2.12.4.jar"></include>
+			<include name="BOOT-INF/lib/jackson-databind-2.12.4.jar"></include>
+			<include name="BOOT-INF/lib/jackson-datatype-jdk8-2.12.4.jar"></include>
+			<include name="BOOT-INF/lib/jackson-datatype-jsr310-2.12.4.jar"></include>
+			<include name="BOOT-INF/lib/jackson-module-parameter-names-2.12.4.jar"></include>
+			<include name="BOOT-INF/lib/jakarta.annotation-api-1.3.5.jar"></include>
+			<include name="BOOT-INF/lib/jakarta.persistence-api-2.2.3.jar"></include>
+			<include name="BOOT-INF/lib/jakarta.transaction-api-1.3.3.jar"></include>
+			<include name="BOOT-INF/lib/jandex-2.2.3.Final.jar"></include>
+			<include name="BOOT-INF/lib/javassist-3.27.0-GA.jar"></include>
+			<include name="BOOT-INF/lib/javax.activation-api-1.2.0.jar"></include>
+			<include name="BOOT-INF/lib/jaxb-api-2.3.1.jar"></include>
+			<include name="BOOT-INF/lib/jaxb-runtime-2.3.1.jar"></include>
+			<include name="BOOT-INF/lib/jboss-logging-3.4.1.Final.jar"></include>
+			<include name="BOOT-INF/lib/jjwt-0.9.1.jar"></include>
+			<include name="BOOT-INF/lib/jul-to-slf4j-1.7.32.jar"></include>
+			<include name="BOOT-INF/lib/log4j-api-2.14.1.jar"></include>
+			<include name="BOOT-INF/lib/log4j-to-slf4j-2.14.1.jar"></include>
+			<include name="BOOT-INF/lib/logback-classic-1.2.5.jar"></include>
+			<include name="BOOT-INF/lib/logback-core-1.2.5.jar"></include>
+			<include name="BOOT-INF/lib/lombok-1.18.22.jar"></include>
+			<include name="BOOT-INF/lib/mysql-connector-java-8.0.28.jar"></include>
+			<include name="BOOT-INF/lib/protobuf-java-3.11.4.jar"></include>
+			<include name="BOOT-INF/lib/slf4j-api-1.7.26.jar"></include>
+			<include name="BOOT-INF/lib/snakeyaml-1.28.jar"></include>
+			<include name="BOOT-INF/lib/spring-aop-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-aspects-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-beans-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-boot-2.5.4.jar"></include>
+			<include name="BOOT-INF/lib/spring-boot-autoconfigure-2.5.4.jar"></include>
+			<include name="BOOT-INF/lib/spring-boot-jarmode-layertools-2.5.4.jar"></include>
+			<include name="BOOT-INF/lib/spring-context-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-core-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-data-commons-2.5.4.jar"></include>
+			<include name="BOOT-INF/lib/spring-data-jpa-2.5.4.jar"></include>
+			<include name="BOOT-INF/lib/spring-expression-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-jcl-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-jdbc-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-orm-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-security-config-5.5.2.jar"></include>
+			<include name="BOOT-INF/lib/spring-security-core-5.5.2.jar"></include>
+			<include name="BOOT-INF/lib/spring-security-crypto-5.5.2.jar"></include>
+			<include name="BOOT-INF/lib/spring-security-jwt-1.0.7.RELEASE.jar"></include>
+			<include name="BOOT-INF/lib/spring-security-web-5.5.2.jar"></include>
+			<include name="BOOT-INF/lib/spring-tx-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-web-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/spring-webmvc-5.3.9.jar"></include>
+			<include name="BOOT-INF/lib/stax-ex-1.8.jar"></include>
+			<include name="BOOT-INF/lib/tomcat-embed-core-9.0.52.jar"></include>
+			<include name="BOOT-INF/lib/tomcat-embed-el-9.0.52.jar"></include>
+			<include name="BOOT-INF/lib/tomcat-embed-websocket-9.0.52.jar"></include>
+			<include name="BOOT-INF/lib/txw2-2.3.1.jar"></include>
+			<include name="BOOT-INF/lib/validation-api-2.0.1.Final.jar"></include>
+		</fileset>
+  </path>
+  <taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
+  <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+    <classpath path="lib/jacoco/jacocoant.jar"/>
+  </taskdef>
+  <target name="init">
+    <mkdir dir="${build.dir}/classes"/>
+	<copy todir="lib" flatten="true">
+	  <path>
+		<pathelement path="${project.classpath}"/>
+	  </path>
+	</copy>
+  </target>
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+  
+  <target name="cobertura" depends="clean,init">
+    <delete file="cobertura.ser" />
+	<cobertura-instrument todir="${instrumented.dir}" ignoreTrivial="true">
+	    <ignoreMethodAnnotation annotationName="org.seven.CoverageIgnore"/>
+		<auxClasspath path="" />
+		<ignore regex="org.apache.log4j.*" />
+		<fileset dir="${classes.dir}">
+			<include name="**/*.class" />
+			<exclude name="**/*Test.class" />
+		</fileset>
+	</cobertura-instrument>
+  </target>
+  
+  <target name="compile" unless="skip.compile" >
+    <javac srcdir="src/main/java" destdir="${build.dir}/classes" includeDestClasses="true" source="1.8" target="1.8">
+	   <classpath  refid="project.classpath"/>
+	</javac>
+  </target>
+  
+  <target name="jar" depends="compile" unless="skip.jar">
+	  <spring-boot:exejar destfile="${build.dir}/${project.name}.jar" classes="${build.dir}/classes" start-class="org.seven.KafkaApplication">
+		<resources>
+			<fileset dir="src/main/resources" />
+		</resources>
+		<lib>
+			<fileset dir="lib">
+			</fileset>
+		</lib>
+	</spring-boot:exejar>
+  </target>
+  
+  <target name="test">
+    <property name="collector.dir" value="${build.dir}/failingTests"/>
+    <property name="collector.class" value="FailedTests"/>
+    <delete>
+        <fileset dir="${collector.dir}" includes="${collector.class}*.class"/>
+    </delete>
+    <javac srcdir="${collector.dir}" destdir="${collector.dir}"/>
+    <available file="${collector.dir}/${collector.class}.class" property="hasFailingTests"/>
+    <junit haltonerror="false" haltonfailure="false">
+        <sysproperty key="ant.junit.failureCollector" value="${collector.dir}/${collector.class}"/>
+        <classpath>
+            <pathelement location="${collector.dir}"/>
+        </classpath>
+        <batchtest todir="${collector.dir}" unless="hasFailingTests">
+            <fileset dir="${collector.dir}" includes="**/*.java" excludes="**/${collector.class}.*"/>
+            <formatter type="failure"/>
+            <formatter type="plain" usefile="false"/>
+        </batchtest>
+        <test name="FailedTests" if="hasFailingTests">
+            <formatter type="failure"/>
+            <formatter type="plain" usefile="false"/>
+        </test>
+    </junit>
+  </target>
+</project>
